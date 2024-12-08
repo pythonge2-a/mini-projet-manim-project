@@ -1,0 +1,34 @@
+/**
+ * SI LES MODIFICATIONS NE S'AFFICHENT PAS, VIDER LE CACHE DU NAVIGATEUR (CTRL + F5)
+ */
+
+**/
+.CodeMirror {
+    border: 1px solid #ddd;
+    font-size: 13px;
+    height: auto;
+    min-height: 500px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    max-width: 150ch;
+    margin: 0 auto;   /* center */
+    background-color: #eae1ca;
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 14px 14px rgb(133, 133, 133);
+}

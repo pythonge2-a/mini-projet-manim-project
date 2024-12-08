@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Result</title>
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
+</head>
+
+<body>
+    <h1>Result</h1>
+    <video width="1000" controls autoplay loop>
+        <source src="/media/videos/temp/1080p60/output.mp4" type="video/mp4">
+    </video>
+    <br>
+    <a href="{% url 'home' %}">Home page</a>
+</body>

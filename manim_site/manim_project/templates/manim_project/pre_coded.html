@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Generate pre-coded video</title>
+
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
+</head>
+
+
+<body>
+    <h1>Generate pre-coded video</h1>
+    <!-- Form to submit the selected script -->
+    <form method="post" action="{% url 'generate_pre_coded_video' %}">
+        {% csrf_token %}
+        <label for="script_name">Choose a pre-coded script:</label>
+        
+        <hr style="border: 0.4px solid black;">
+        <p>Blue circle</p>
+        <button type="submit" name="script_name" value="manim_script_1.py">Generate</button>
+
+        <hr style="border: 0.4px solid black;">
+        <p>Dot displacement</p>
+        <label for="x_coord">x coordinate:</label>
+        <input type="number" id="x_coord" name="x_coord" required>
+        <label for="y_coord">y coordinate:</label>
+        <input type="number" id="y_coord" name="y_coord" required>
+        <button type="submit" name="script_name" value="manim_script_3.py">Generate</button>
+        
+        <hr style="border: 0.4px solid black;">
+
+        <a href="{% url 'home' %}">Home page</a>
+
+    </form>
+</body>
+</html>

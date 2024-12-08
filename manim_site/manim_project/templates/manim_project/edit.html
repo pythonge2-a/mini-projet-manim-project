@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Manim Script Editor</title>
+    
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/isotope.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
+
+</head>
+<body>
+    <h1>Manim Script Editor</h1>
+    <p>You must begin your script with the following lines:</p>
+    <pre><code class="python">from manim import *<br>class output(Scene):</code></pre>
+
+
+    <form method="post" action="{% url 'generate_video' %}">
+        {% csrf_token %}
+        <!-- Textarea target of CodeMirror -->
+        <textarea id="code-editor" name="code" placeholder="Type your Python script here..."></textarea><br>
+        <button type="submit">Generate</button>
+    </form>
+    <br>
+    <a href="{% url 'home' %}">Go back</a>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+    
+
+    <!-- CodeMirror init -->
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+            mode: "python",         // Mode Python
+            lineNumbers: true,      // Afficher les numéros de ligne
+            theme: "isotope",       // Thème par défaut
+            indentUnit: 4,          // Taille de l'indentation
+            tabSize: 4,             // Taille des tabulations
+            matchBrackets: true     // Mise en évidence des crochets
+        });
+    </script>
+</body>
+</html>
