@@ -78,7 +78,7 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ---
 
-## Temporary Installation
+## Temporary Installation (Windows commands, on linux this may not work)
 
 1. Clone the repository:  
    ```bash
@@ -101,4 +101,4 @@ The project aims to democratize access to these tools through an intuitive web p
     cd .\manim_site\
 10. Run the server with 
     ```bash 
-    python manage.py runserver`
+    python manage.py runserver
