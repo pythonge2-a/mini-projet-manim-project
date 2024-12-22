@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Video bank</title>
+
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/bourdon.ico' %}">
+</head>
+
+<body>
+    <h1>Video bank</h1>
+    <h2>Mathematical animations</h2>
+    <h3>Fourier Approximation</h3>
+    <video width="400" loop class="small_video">
+        <source src="/media/video_bank/FourierApprox.mp4" type="video/mp4">
+    </video><br>
+    <h3>Particule mouvement</h3>
+    <video width="400" loop class="small_video">
+        <source src="/media/video_bank/Pendulum.mp4" type="video/mp4">
+    </video><br>
+
+    <a href="{% url 'home' %}">Home page</a>
+</body>
+
+
+
+
+
+<script>
+    // Sélectionne toutes les vidéos avec la classe .small_video
+    const videos = document.querySelectorAll('.small_video');
+
+    // Ajoute des événements à chaque vidéo individuellement
+    videos.forEach(video => {
+        video.addEventListener('mouseover', function () {
+            this.play();
+        });
+
+        video.addEventListener('mouseout', function () {
+            this.pause();
+            this.currentTime = 0;
+        });
+    });
+</script>
+</html>

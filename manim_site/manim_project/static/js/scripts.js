@@ -9,3 +9,4 @@ document.getElementById("generate").addEventListener("click", function(event) {
     // Submit the form // Peut etre inutile : a controler
     document.getElementById("form").submit();
 });
+

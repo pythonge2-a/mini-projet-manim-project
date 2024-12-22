@@ -9,4 +9,5 @@ urlpatterns = [
     path('generate/', views.generate_video_view, name='generate_video'),  # Page de génération de vidéo
     path('result/', views.result_view , name='result'),  # Page de résultat
     path('generate_pre_coded_video/', views.generate_pre_coded_video_view, name='generate_pre_coded_video'),
+    path('video_bank/', views.video_bank_view, name='video_bank'),
 ]

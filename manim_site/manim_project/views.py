@@ -63,6 +63,7 @@ def generate_pre_coded_video_view(request):
 def result_view(request):
     return render(request, 'manim_project/result.html')
 
-
+def video_bank_view(request):
+    return render(request, 'manim_project/video_bank.html')
 
 
