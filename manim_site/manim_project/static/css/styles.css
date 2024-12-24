@@ -1,6 +1,31 @@
-/*
- * SI LES MODIFICATIONS NE S'AFFICHENT PAS, VIDER LE CACHE DU NAVIGATEUR (CTRL + F5)
- */
+/* ==========================================================
+   GLOBAL STYLES
+   ========================================================== */
+
+/* Astuce : Videz le cache du navigateur pour voir les changements (Ctrl + F5) */
+
+body {
+    max-width: 130ch;
+    margin: 0 auto;
+    background-color: #efe4c9;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 0px; /* Space above the text */
+    margin-bottom: 0px; /* Space below the text */
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 20px; /* Space above the text */
+    margin-bottom: 20px; /* Space below the text */
+}
 
 textarea {
     width: 100%;
@@ -13,28 +38,9 @@ textarea {
     resize: vertical;
 }
 
-.CodeMirror {
-    border: 1px solid #ddd;
-    font-size: 12px;
-    height: auto;
-    min-height: 500px;
-}
-
-.logo {
-    width: 50px;
-    height: auto;
-    margin: 0 auto;
-}
-
-h1 {
-    text-align: center;
-}
-
-body {
-    max-width: 130ch;
-    margin: 0 auto;
-    background-color: #eae1ca;
-}
+/* ==========================================================
+   VIDEO STYLES
+   ========================================================== */
 
 video {
     display: block;
@@ -43,6 +49,42 @@ video {
     box-shadow: 0 14px 14px rgb(133, 133, 133);
 }
 
+.video-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.video-container video {
+    max-width: 100%;
+}
+
+.small_video {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.small_video:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================
+   CODEMIRROR STYLES
+   ========================================================== */
+
+.CodeMirror {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    height: auto;
+    min-height: 500px;
+}
+
+/* ==========================================================
+   LOADER STYLES
+   ========================================================== */
+
 .loader {
     width: 100%;
     height: 4.8px;
@@ -50,8 +92,9 @@ video {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-  }
-  .loader::after {
+}
+
+.loader::after {
     content: '';  
     width: 130px;
     height: 10px;
@@ -61,15 +104,25 @@ video {
     left: 0;
     box-sizing: border-box;
     animation: hitZak 1.2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes hitZak {
+}
+
+@keyframes hitZak {
     0% {
-      left: 0;
-      transform: translateX(-1%);
+        left: 0;
+        transform: translateX(-1%);
     }
     100% {
-      left: 100%;
-      transform: translateX(-99%);
+        left: 100%;
+        transform: translateX(-99%);
     }
-  }
+}
+
+/* ==========================================================
+   MISC STYLES
+   ========================================================== */
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin: 0 auto;
+}

@@ -12,6 +12,10 @@
 
 </head>
 <body>
+    <div class="logo">
+        <img src="{% static 'images/bourdon.png' %}" alt="logo">
+    </div>
+    
     <h1>Manim Script Editor</h1>
     <div class="loader" id="loader1" style="display: none;"></div> 
     <form id="form" method="post" action="{% url 'generate_video' %}">
