@@ -11,6 +11,10 @@
 
 
 <body>
+    <div class="logo">
+        <img src="{% static 'images/bourdon.png' %}" alt="logo">
+    </div>
+    
     <h1>Generate pre-coded video</h1>
     <!-- Form to submit the selected script -->
     <form method="post" action="{% url 'generate_pre_coded_video' %}">

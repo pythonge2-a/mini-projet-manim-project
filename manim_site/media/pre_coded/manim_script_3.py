@@ -9,7 +9,7 @@ class output(Scene):
         self.dest_y = dest_y
 
     def construct(self):
-        dot = Dot(radius=0.5, color=WHITE, point=ORIGIN)
+        dot = Dot(radius=0.1, color=WHITE, point=ORIGIN)
         self.add(dot)
 
         # AShow the destination coordinates
