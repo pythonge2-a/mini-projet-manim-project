@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from manim_project.utils.generate_video import generate_manim_video, generate_pre_coded_video
 from os.path import join
 from django.conf import settings
+import os
 
 
 
@@ -67,3 +68,15 @@ def video_bank_view(request):
     return render(request, 'manim_project/video_bank.html')
 
 
+
+# Get the script content for the video bank
+def get_script(request):
+    if request.method == 'POST':
+        script_path = request.POST.get('script_path')
+        full_path = os.path.join(settings.MEDIA_ROOT, script_path)
+        
+        with open(full_path, 'r') as file:
+            script_content = file.read()
+            
+        request.session['script_content'] = script_content
+        return redirect('edit_code')

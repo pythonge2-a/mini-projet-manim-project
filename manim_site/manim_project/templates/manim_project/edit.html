@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/base16-light.min.css">
     <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
-
 </head>
+
+
+
+
+
 <body>
     <div class="logo">
         <img src="{% static 'images/bourdon.png' %}" alt="logo">
@@ -21,23 +25,26 @@
     <form id="form" method="post" action="{% url 'generate_video' %}">
         {% csrf_token %}
 
-        <!-- Textarea target of CodeMirror -->
+        <!-- Textarea target of CodeMirror --> <!-- IMPORTANT INDENTATION HERE -->
         <textarea id="code-editor" name="code" placeholder="Type your Python script here...">
+{% if request.session.script_content %}{{ request.session.script_content }}{% else %}
 from manim import *
     class output(Scene):
         def construct(self):
             pass
-        </textarea>
+            {% endif %}
+            </textarea>
 
         <div class="loader" id="loader2" style="display: none;"></div><br>
         <button id="generate" type="submit" >Generate</button>
     </form>
-    
+
     <br>
-    <a href="{% url 'home' %}">Go back</a>
+    <a href="{% url 'home' %}">Home page</a>
 
 
     
+
 
     <!-- Custom JS -->
     <script src="{% static 'js/scripts.js' %}"></script>
