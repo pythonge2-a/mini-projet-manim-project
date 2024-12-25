@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    {% load static %}
+    <title>Video bank</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/bourdon.ico' %}">
+</head>
+
+
+
+<body>
+    <div class="logo">
+        <img src="{% static 'images/bourdon.png' %}" alt="logo">
+    </div>
+    
+    <h1>Video bank</h1>
+    <h2>Mathematical animations</h2>
+    <hr style="border: 0.4px solid black;">
+    <div class="video-container">
+        <div>
+            <h3>Fourier Approximation</h3>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+            <form method="post" action="{% url 'get-script' %}">
+                {% csrf_token %}
+                <input type="hidden" name="script_path" value="video_bank/FourierApprox/FourierApprox.py">
+                <div style="text-align: center;">
+                    <br><button type="submit">Edit this video</button>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <h3>Fourier Approximation</h3>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+            <form method="post" action="{% url 'get-script' %}">
+                {% csrf_token %}
+                <input type="hidden" name="script_path" value="video_bank/FourierApprox/FourierApprox.py">
+                <div style="text-align: center;">
+                    <br><button type="submit">Edit this video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <br><br>
+    <h2>Physics animations</h2>
+    <hr style="border: 0.4px solid black;">
+    <div class="video-container">
+        <div>
+            <h3>Fourier Approximation</h3>
+            <p>Go to Script-editor with this code</p><br>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div>
+            <h3>Fourier Approximation</h3>
+            <p>Go to Script-editor with this code</p><br>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <br><br>
+    <h2>Energy animations</h2>
+    <hr style="border: 0.4px solid black;">
+    <div class="video-container">
+        <div>
+            <h3>Fourier Approximation</h3>
+            <p>Go to Script-editor with this code</p><br>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div>
+            <h3>Fourier Approximation</h3>
+            <p>Go to Script-editor with this code</p><br>
+            <video width="475" loop class="small_video">
+                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    
+    <br><br><a href="{% url 'home' %}">Home page</a>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>

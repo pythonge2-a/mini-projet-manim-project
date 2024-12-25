@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "mini-projet-manim-project"
+version = "0.1.0"
+description = ""
+authors = ["Meven Ricchieri <74274472+Belprot@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+manim = "^0.18.1"
+django = "^5.1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
