@@ -306,100 +306,7 @@ class MatrixTransformation(Scene):
         return formatted
 
 
-class IntegralCalculator(Scene):
-    def construct(self):
-        # Fonction à intégrer : ln(x)
-        func = lambda x: (x-1)  # Vous pouvez modifier cette fonction
 
-        # Intervalle [a, b] pour l'intégrale
-        a, b = 2, 10  # Exemple d'un intervalle invalide pour ln(x)
-        
-        # Vérification de la validité de la fonction sur l'intervalle
-        if not self.is_valid_function(func, a, b):
-            self.handle_invalid_function()
-            return  # Quitter si la fonction est invalide
-
-        # Ajuster l'intervalle des axes en fonction de la fonction et des limites
-        x_min = a
-        x_max = b
-        try:
-            y_min = func(x_min)
-            y_max = func(x_max)
-        except Exception as e:
-            self.handle_invalid_function()
-            return
-
-        axes = Axes(
-            x_range=[x_min, x_max, (x_max - x_min) / 5],  # ajuster l'échelle de x
-            y_range=[y_min, y_max, (y_max - y_min) / 5],  # ajuster l'échelle de y
-            axis_config={"color": BLUE}
-        )
-
-        labels = axes.get_axis_labels(x_label="x", y_label="f(x)")
-        self.play(Create(axes), Write(labels))
-
-        # Tracer la courbe
-        curve = axes.plot(func, color=YELLOW)
-        self.play(Create(curve))
-
-        # Affichage de l'aire sous la courbe
-        area = axes.get_area(curve, x_range=[a, b], color=GREEN, opacity=0.5)
-        self.play(FadeIn(area))
-
-        # Affichage des labels a et b
-        a_label = MathTex("a").next_to(axes.c2p(a, 0), DOWN)
-        b_label = MathTex("b").next_to(axes.c2p(b, 0), DOWN)
-        self.play(Write(a_label), Write(b_label))
-
-        self.wait(1)
-
-        # Calcul de l'intégrale
-        integral_result = self.calculate_integral(func, a, b)
-        if integral_result is None:
-            self.handle_invalid_integral()
-            return
-
-        result_text = MathTex(f"{integral_result:.2f}").scale(1.5).to_edge(UP)
-        self.play(Write(result_text))
-        self.wait(2)
-
-        # Nettoyage
-        self.play(FadeOut(result_text), FadeOut(area), FadeOut(curve), FadeOut(a_label), FadeOut(b_label))
-        self.wait(1)
-
-    def calculate_integral(self, func, a, b):
-        try:
-            result, _ = quad(func, a, b)
-            if np.isinf(result) or np.isnan(result):
-                return None  # Si l'intégrale est infinie ou indéfinie
-            return result
-        except Exception as e:
-            return None  # En cas d'erreur dans le calcul de l'intégrale
-
-    def is_valid_function(self, func, a, b):
-        # Vérification si la fonction est définie et valable sur l'intervalle
-        try:
-            # Tester si la fonction est définie à un ou plusieurs points de l'intervalle
-            for x in np.linspace(a, b, 100):
-                func(x)  # Vérifie si la fonction renvoie une valeur valide
-            return True
-        except Exception:
-            return False  # Si une exception est levée, la fonction est invalide
-
-    def handle_invalid_function(self):
-        error_message = MathTex("La fonction n'est pas définie sur l'intervalle").scale(1.5).to_edge(UP)
-        self.play(Write(error_message))
-        self.wait(2)
-        self.play(FadeOut(error_message))
-
-    def handle_invalid_integral(self):
-        error_message = MathTex("L'intégrale est divergente ou indéfinie").scale(1.5).to_edge(UP)
-        self.play(Write(error_message))
-        self.wait(2)
-        self.play(FadeOut(error_message))
-
-
-class Integral(Scene):
     def construct(self):
         # Title
         title = Text("Integral")
@@ -454,3 +361,33 @@ class Integral(Scene):
         
         self.wait(1)
 
+
+class OrbitePlanetes(Scene):
+    def construct(self):
+        # Paramètres modifiables par l'utilisateur
+        demi_grand_axe = 5   # en unités de Manim
+        excentricite = 0.9   # entre 0 et 1
+        periode_orbitale = 10  # en secondes
+
+        # Calcul des paramètres de l'ellipse
+        c = demi_grand_axe * excentricite  # distance focale
+        a = demi_grand_axe  # semi-grand axe
+        b = np.sqrt(a**2 - c**2)  # semi-petit axe
+
+        # Création de l'orbite elliptique
+        orbite = Ellipse(width=2*a, height=2*b)
+        orbite.set_color(WHITE)
+
+        # Création du Soleil
+        soleil = Dot(ORIGIN, color=YELLOW)
+
+        # Création de la planète
+        planete = Dot(orbite.point_at_angle(0), color=BLUE)
+
+        # Ajout des objets à la scène
+        self.add(orbite, soleil, planete)
+
+        # Animation de la planète sur 10 secondes, avec 1 tour par seconde (répétition de l'orbite)
+        self.play(
+            MoveAlongPath(planete, orbite, rate_func=linear, run_time=periode_orbitale)
+        )
