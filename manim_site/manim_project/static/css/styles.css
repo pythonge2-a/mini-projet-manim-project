@@ -46,7 +46,7 @@ video {
     display: block;
     margin: 0 auto;
     border-radius: 20px;
-    box-shadow: 0 14px 14px rgb(133, 133, 133);
+    /* box-shadow: 0 14px 14px rgb(133, 133, 133); */
 }
 
 .video-container {
