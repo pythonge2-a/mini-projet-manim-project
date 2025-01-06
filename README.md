@@ -78,11 +78,11 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ---
 
-## Temporary Installation (Windows commands, on linux this may not work)
+## Installation of the project
 
 1. Clone the repository:  
    ```bash
-   git clone --branch M.Ricchieri git@github.com:pythonge2-a/mini-projet-manim-project.git
+   git clone https://github.com/pythonge2-a/mini-projet-manim-project.git
 2. Go to the directory with 
     ```bash
     cd mini-projet-manim-project
