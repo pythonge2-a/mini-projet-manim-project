@@ -9,6 +9,7 @@ readme = "README.md"
 python = ">=3.12,<3.13"
 manim = "^0.18.1"
 django = "^5.1.4"
+matplotlib = "^3.10.0"
 
 
 [build-system]
