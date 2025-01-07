@@ -6,13 +6,13 @@ import math
 
 class ChampDePenteSimple(Scene):
     def construct(self):
-        # Paramètres pour les axes
+        # Parametres pour les axes
         taille_x = 10  # Taille de l'axe x
         taille_y = 10  # Taille de l'axe y
         pas_x = 0.5  # Espacement sur l'axe x
         pas_y = 0.5  # Espacement sur l'axe y
 
-        # Fonctions définies par l'utilisateur
+        # Fonctions definies par l'utilisateur
         a = lambda t, y: 5  # Fonction a(t, y)
         b = lambda t, y: 3  # Fonction b(t, y)
         c = lambda t, y: np.tan(t)  # Fonction c(t, y)
@@ -20,16 +20,16 @@ class ChampDePenteSimple(Scene):
         # Fonction pour calculer la pente : y'(t)
         def pente(x, y):
             denom = a(x, y)
-            if abs(denom) < 1e-3:  # Éviter la division par zéro
+            if abs(denom) < 1e-3:  # Eviter la division par zéro
                 return 0
             return (c(x, y) - b(x, y) * y) / denom
 
-        # Fonction pour déterminer la couleur en fonction de la pente
+        # Fonction pour determiner la couleur en fonction de la pente
         def couleur_pente(valeur_pente):
             norm_pente = np.clip(valeur_pente / 10, -1, 1)
             return interpolate_color(BLUE, RED, (norm_pente + 1) / 2)
 
-        # Création des axes
+        # Creation des axes
         axes = Axes(
             x_range=[-taille_x, taille_x, pas_x],
             y_range=[-taille_y, taille_y, pas_y],
@@ -39,12 +39,12 @@ class ChampDePenteSimple(Scene):
         # Ajouter les labels aux axes
         axes_labels = axes.get_axis_labels(x_label="t", y_label="y")
 
-        # Génération du champ de pente
+        # Generation du champ de pente
         champ = VGroup()
         for x in np.arange(-taille_x, taille_x, pas_x):
             for y in np.arange(-taille_y, taille_y, pas_y):
                 pente_value = pente(x, y)
-                pente_value = np.clip(float(pente_value), -100, 100)  # Convertir en float et limiter les valeurs extrêmes
+                pente_value = np.clip(float(pente_value), -100, 100)  # Convertir en float et limiter les valeurs extremes
                 angle = np.arctan(pente_value)
                 couleur = couleur_pente(pente_value)
                 fleche = Arrow(
@@ -70,11 +70,11 @@ class FirstHarmonicAnimation(Scene):
         # Paramètres utilisateur
         amplitude = 24          # Amplitude A
         pulsation = 6     # Pulsation omega
-        dephasage = PI     # Déphasage phi
-        num_periods = 2        # Nombre de périodes à afficher
+        dephasage = PI     # Dephasage phi
+        num_periods = 2        # Nombre de periodes a afficher
 
         # Calcul des bornes des axes
-        period = 2 * PI / pulsation  # Période fondamentale
+        period = 2 * PI / pulsation  # Periode fondamentale
         x_min = -num_periods * period
         x_max = num_periods * period
         x_step = period / 2          # Espacement des ticks sur x
@@ -82,7 +82,7 @@ class FirstHarmonicAnimation(Scene):
         y_max = amplitude
         y_step = amplitude / 2       # Espacement des ticks sur y
 
-        # Création des axes adaptés aux paramètres
+        # Creation des axes adaptes aux parametres
         axes = Axes(
             x_range=[x_min, x_max, x_step],
             y_range=[y_min, y_max, y_step],
@@ -98,17 +98,17 @@ class FirstHarmonicAnimation(Scene):
         }
         axes.x_axis.add_labels(x_ticks)
 
-        # Fonction trigonométrique : y = A * cos(omega * t + phi)
+        # Fonction trigonometrique : y = A * cos(omega * t + phi)
         trig_func = axes.plot(
             lambda x: amplitude * np.cos(pulsation * x + dephasage),
             color=BLUE
         )
 
-        # Affichage de l'équation
+        # Affichage de l'equation
         equation = MathTex("y = A \\cos(\\omega t + \\phi)")
         equation.to_corner(UP)
 
-        # Animation du tracé de la fonction
+        # Animation du trace de la fonction
         self.play(Create(axes))
         self.play(Create(trig_func))
         self.play(Write(equation))
@@ -118,11 +118,11 @@ class FirstHarmonicAnimation(Scene):
 class FunctionPlot(Scene):
 
     def construct(self):
-        # Définition des paramètres
-        equation = "np.exp(-x)*np.cos(x)"     # Fonction (en notation Python, ex: "x**2", "sin(x)")
-        graph_color = RED          # Couleur du graphe (ex: BLUE, RED, GREEN)
-        x_range = [-20, 20, 5]      # Plage pour l'axe X : [min, max, graduation]
-        y_range = [-10, 10, 5]      # Plage pour l'axe Y : [min, max, graduation]
+        # Definition des paramètres
+        equation = "10*np.exp(-10*x**2) + np.sin(x**4)"     # Equation a tracer
+        graph_color = RED                     # Couleur du graphe (ex: BLUE, RED, GREEN)
+        x_range = [-20, 20, 5]                # Plage pour l'axe X : [min, max, graduation]
+        y_range = [-10, 10, 5]                # Plage pour l'axe Y : [min, max, graduation]
 
         # Configuration des axes
         axes = Axes(
@@ -138,7 +138,7 @@ class FunctionPlot(Scene):
 
         # Dessiner la fonction
         graph = axes.plot(
-            lambda x: eval(equation),  # Évaluer l'équation entrée
+            lambda x: eval(equation),  # Evaluer l'equation entree
             color=graph_color,
         )
 
@@ -150,12 +150,12 @@ class FunctionPlot(Scene):
 
 class GeometricTransform(Scene):
     def construct(self):
-        # Définition des paramètres
+        # Definition des parametres
         shape_type = "triangle"  # "circle", "square", "triangle"
         transformation = "scaling"  # "rotation", "translation", "scaling"
         param = 0.1  # Angle pour rotation, facteur pour scaling, vecteur pour translation
 
-        # Création de la figure
+        # Creation de la figure
         if shape_type == "circle":
             shape = Circle()
         elif shape_type == "square":
@@ -179,7 +179,7 @@ class GeometricTransform(Scene):
 
 class FourierSeries(Scene):
     def construct(self):
-        # Variable pour sélectionner la fonction (square, triangle, toothsaw) et le nombre de termes dans l'approximation
+        # Variable pour selectionner la fonction (square, triangle, toothsaw) et le nombre de termes dans l'approximation
         function_type = "square"  
         number_of_terms = 10
 
@@ -190,7 +190,7 @@ class FourierSeries(Scene):
             tips=False
         )
 
-        # Définir les séries de Fourier pour chaque fonction
+        # Definir les séries de Fourier pour chaque fonction
         def fourier_series(x, n_terms=10):
             result = 0
             if function_type == "square":
@@ -230,8 +230,8 @@ class FourierSeries(Scene):
 
 class MatrixTransformation(Scene):
     def construct(self):
-        # Matrice et opération définies par l'utilisateur
-        matrix = [[2, 1, 8, 20], [1, 3, 7, 5], [1, 2, 4, 3], [1, 4, 6, 12]]  # Matrice carrée
+        # Matrice et operation definies par l'utilisateur
+        matrix = [[2, 1, 8, 20], [1, 3, 7, 5], [1, 2, 4, 3], [1, 4, 6, 12]]  # Matrice carree
         operation = "inverse"  # "inverse", "transpose", "determinant"
 
         # Formattage de la matrice initiale
@@ -240,7 +240,7 @@ class MatrixTransformation(Scene):
         matrix_label = Text("Matrice initiale").next_to(matrix_manim, UP)
         self.play(Write(matrix_label), Write(matrix_manim))
 
-        # Appliquer l'opération
+        # Appliquer l'operation
         if operation == "inverse":
             try:
                 result_matrix = self.inverse(matrix)
@@ -256,13 +256,13 @@ class MatrixTransformation(Scene):
             formatted_result = self.format_matrix(result_matrix)
         elif operation == "determinant":
             determinant_value = self.determinant(matrix)
-            determinant_text = Text(f"Déterminant = {determinant_value:.3f}").scale(0.8)
+            determinant_text = Text(f"Determinant = {determinant_value:.3f}").scale(0.8)
             determinant_text.next_to(matrix_manim, DOWN)
             self.play(Write(determinant_text))
             self.wait()
             return
         else:
-            error_text = Text("Opération inconnue").set_color(RED)
+            error_text = Text("Operation inconnue").set_color(RED)
             error_text.next_to(matrix_manim, DOWN)
             self.play(Write(error_text))
             self.wait()
@@ -270,25 +270,25 @@ class MatrixTransformation(Scene):
 
         # Animation de la transformation
         result_manim = Matrix(formatted_result).scale(0.8).set_color(GREEN)
-        result_label = Text("Résultat").next_to(result_manim, UP)
+        result_label = Text("Resultat").next_to(result_manim, UP)
 
         self.play(Transform(matrix_manim, result_manim), Transform(matrix_label, result_label))
         self.wait()
 
     def inverse(self, matrix):
-        """Calcul l'inverse d'une matrice carrée."""
+        """Calcul l'inverse d'une matrice carree."""
         import numpy as np
         np_matrix = np.array(matrix)
         if np.linalg.det(np_matrix) == 0:
-            raise ValueError("La matrice est singulière et n'a pas d'inverse.")
+            raise ValueError("La matrice est singuliere et n'a pas d'inverse.")
         return np.linalg.inv(np_matrix).tolist()
 
     def transpose(self, matrix):
-        """Retourne la transposée d'une matrice."""
+        """Retourne la transposee d'une matrice."""
         return list(map(list, zip(*matrix)))
 
     def determinant(self, matrix):
-        """Retourne le déterminant d'une matrice carrée."""
+        """Retourne le determinant d'une matrice carrée."""
         import numpy as np
         np_matrix = np.array(matrix)
         return np.linalg.det(np_matrix)
@@ -306,88 +306,32 @@ class MatrixTransformation(Scene):
         return formatted
 
 
-
-    def construct(self):
-        # Title
-        title = Text("Integral")
-        self.play(Write(title))
-        self.wait(1)
-        self.play(FadeOut(title))
-        
-        # Explanation 1
-        explanation1 = Text("An integral is a fundamental concept in calculus.").scale(0.8).to_edge(UP)
-        self.play(Write(explanation1))
-        self.wait(1)
-        self.play(FadeOut(explanation1))
-        
-        # Explanation 2
-        explanation3 = Text("The integral of a function f(x) from a to b is written as:").scale(0.5).to_edge(UP)
-        self.play(Write(explanation3))
-        
-        # Equation
-        equation = MathTex(r"\int_a^b f(x) \, dx").scale(2)
-        self.play(Write(equation))
-        self.wait(2)
-        self.play(FadeOut(explanation3))
-        self.play(FadeOut(equation))
-        
-        # Explanation 4
-        explanation4 = Text("It is used to find the area under the curve of f(x) between a and b.").scale(0.5).to_edge(UP)
-        self.play(Write(explanation4))
-        self.play(FadeOut(explanation4))
-        
-        self.wait(1)
-
-        title = MathTex(r"S =\int_a^b f(x) \, dx").to_edge(UP)
-        self.play(Write(title))
-        
-        axes = Axes(
-            x_range=[0, 10, 1],
-            y_range=[0, 10, 1],
-            axis_config={"color": BLUE}
-        )
-        labels = axes.get_axis_labels(x_label="x", y_label="f(x)")
-        self.play(Create(axes), Write(labels))
-        
-        curve = axes.plot(lambda x: 0.1 * x**2, color=YELLOW)
-        self.play(Create(curve))
-        
-        area = axes.get_area(curve, x_range=[2, 8], color=[GREEN, BLUE])
-        self.play(FadeIn(area))
-        
-        a_label = MathTex("a").next_to(axes.c2p(2, 0), DOWN)
-        b_label = MathTex("b").next_to(axes.c2p(8, 0), DOWN)
-        self.play(Write(a_label), Write(b_label))
-        
-        self.wait(1)
-
-
 class OrbitePlanetes(Scene):
     def construct(self):
-        # Paramètres modifiables par l'utilisateur
-        demi_grand_axe = 5   # en unités de Manim
+        # Parametres modifiables par l'utilisateur
+        demi_grand_axe = 5   # en unites de Manim
         excentricite = 0.9   # entre 0 et 1
         periode_orbitale = 10  # en secondes
 
-        # Calcul des paramètres de l'ellipse
+        # Calcul des parametres de l'ellipse
         c = demi_grand_axe * excentricite  # distance focale
         a = demi_grand_axe  # semi-grand axe
         b = np.sqrt(a**2 - c**2)  # semi-petit axe
 
-        # Création de l'orbite elliptique
+        # Creation de l'orbite elliptique
         orbite = Ellipse(width=2*a, height=2*b)
         orbite.set_color(WHITE)
 
-        # Création du Soleil
+        # Creation du Soleil
         soleil = Dot(ORIGIN, color=YELLOW)
 
-        # Création de la planète
+        # Creation de la planète
         planete = Dot(orbite.point_at_angle(0), color=BLUE)
 
-        # Ajout des objets à la scène
+        # Ajout des objets à la scene
         self.add(orbite, soleil, planete)
 
-        # Animation de la planète sur 10 secondes, avec 1 tour par seconde (répétition de l'orbite)
+
         self.play(
             MoveAlongPath(planete, orbite, rate_func=linear, run_time=periode_orbitale)
         )
