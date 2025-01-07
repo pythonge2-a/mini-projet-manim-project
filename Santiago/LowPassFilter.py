@@ -13,7 +13,7 @@ class LowPassFilter(Scene):
         # 3. Text explicatif et formule
         txt = Text("La fonction de transfert d'un filtre").shift(UP*2)
         txt2 = Text(" passe-bas est donnée par :").next_to(txt, DOWN, buff=0.5)
-        transfer_function_formula = MathTex(r"H(f) = \frac{1}{\sqrt{1 + \left(\frac{f}{f_c}\right)^2}}").next_to(txt2, DOWN, buff=0.5)
+        transfer_function_formula = MathTex(r"H(f) = \frac{Uout}{Uin} =\frac{K}{1 + j\frac{\omega}{\omega c}}").next_to(txt2, DOWN, buff=0.5)
 
         # Affichage du texte explicatif et de la formule
         self.play(Write(txt))
