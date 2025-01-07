@@ -96,9 +96,10 @@ The project aims to democratize access to these tools through an intuitive web p
     ```bash
     manim --version
     django-admin --version
-8. Go to the manim_site directory with 
+8. Go to the manim_site directory with (first cmd for Windows / second cmd for linux)
     ```bash
-    cd .\manim_site\
+    cd .\manim_site\ 
+    cd manim_site/
 10. Run the server with 
     ```bash 
     python manage.py runserver
