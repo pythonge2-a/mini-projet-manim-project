@@ -24,6 +24,3 @@
 
 # Ignore personal test files
 tests/
-
-# Ignore ...
-*.sqlite3
