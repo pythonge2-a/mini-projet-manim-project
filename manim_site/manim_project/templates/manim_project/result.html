@@ -14,8 +14,9 @@
     </div>
     
     <h1>Result</h1>
+    <p>Video ID: {{ video_id }}</p>
     <video width="1000" controls autoplay loop>
-        <source src="/media/videos/temp/1080p60/output.mp4" type="video/mp4">
+        <source src="/media/videos/temp_{{ video_id }}/1080p60/output_{{ video_id }}.mp4" type="video/mp4">
     </video>
     <br>
     <a href="{% url 'home' %}">Home page</a>

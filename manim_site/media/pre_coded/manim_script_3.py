@@ -24,14 +24,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Manim script with destination coordinates.")
     parser.add_argument("--x_coord", type=float, default=0, help="Destination x-coordinate")
     parser.add_argument("--y_coord", type=float, default=0, help="Destination y-coordinate")
+    parser.add_argument("--output_name", type=str, required=True, help="Output filename")
     args = parser.parse_args()
+
 
     config.media_width = "100%"
     config.verbosity = "WARNING"
     config.quality = "high_quality"
     config.frame_rate = 60
     config.background_color = "#1e1e1e"
-    config.video_dir = "media/videos/temp/1080p60"
+    config.video_dir = f"media/videos/temp_{args.output_name}/1080p60"
+    video_name = "output_" + args.output_name
+    config.output_file = video_name
     
     scene = output(dest_x=args.x_coord, dest_y=args.y_coord)
     scene.render()
