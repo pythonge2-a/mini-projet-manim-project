@@ -1,0 +1,50 @@
+Test pour v0 = 25.0 m/s, θ = 15.0°
+Hauteur maximale : 2.13 m
+Portée : 31.86 m
+Temps de vol total : 1.32 s
+------------------------------
+Test pour v0 = 20.0 m/s, θ = 30.0°
+Hauteur maximale : 5.10 m
+Portée : 35.31 m
+Temps de vol total : 2.04 s
+------------------------------
+Test pour v0 = 10.0 m/s, θ = 45.0°
+Hauteur maximale : 2.55 m
+Portée : 10.19 m
+Temps de vol total : 1.44 s
+------------------------------
+Test pour v0 = 18.0 m/s, θ = 60.0°
+Hauteur maximale : 12.38 m
+Portée : 28.60 m
+Temps de vol total : 3.18 s
+------------------------------
+Test pour v0 = 22.0 m/s, θ = 75.0°
+Hauteur maximale : 23.02 m
+Portée : 24.67 m
+Temps de vol total : 4.33 s
+------------------------------
+Test pour v0 = 25.0 m/s, θ = 15.0°
+Hauteur maximale : 2.13 m
+Portée : 31.86 m
+Temps de vol total : 1.32 s
+------------------------------
+Test pour v0 = 20.0 m/s, θ = 30.0°
+Hauteur maximale : 5.10 m
+Portée : 35.31 m
+Temps de vol total : 2.04 s
+------------------------------
+Test pour v0 = 10.0 m/s, θ = 45.0°
+Hauteur maximale : 2.55 m
+Portée : 10.19 m
+Temps de vol total : 1.44 s
+------------------------------
+Test pour v0 = 18.0 m/s, θ = 60.0°
+Hauteur maximale : 12.38 m
+Portée : 28.60 m
+Temps de vol total : 3.18 s
+------------------------------
+Test pour v0 = 22.0 m/s, θ = 75.0°
+Hauteur maximale : 23.02 m
+Portée : 24.67 m
+Temps de vol total : 4.33 s
+------------------------------
