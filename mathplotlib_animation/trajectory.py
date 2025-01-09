@@ -13,7 +13,7 @@ args = parser.parse_args()
 if not (5 <= args.v0 <= 25):
     raise ValueError("La vitesse initiale (v0) doit être comprise entre 5 et 25 m/s.")
 if not (15 <= args.theta <= 80):
-    raise ValueError("L'angle (theta) doit être compris entre 15° et 90°.")
+    raise ValueError("L'angle (theta) doit être compris entre 15° et 0°.")
 
 # Paramètres de simulation
 g = 9.81  # Accélération due à la gravité en m/s²
@@ -71,7 +71,7 @@ for angle in theta_values:
     y_theta = v0 * np.sin(angle_rad) * t_points_theta - 0.5 * g * t_points_theta**2
     ax2.plot(x_theta, y_theta, label=f'θ = {angle}°')
 
-ax2.set_title("Trajectoires pour différents angles")
+ax2.set_title("Trajectoires pour différents angles initiales")
 ax2.set_xlabel("Distance horizontale (m)")
 ax2.set_ylabel("Hauteur (m)")
 ax2.legend(loc='upper right')
@@ -89,8 +89,8 @@ ax.set_ylim(0, axis_limit)
 ax.set_aspect('equal')
 
 # Création de la bille
-radius = 0.2  # Rayon de la bille
-ball = plt.Circle((0, 0), radius, color='blue', ec="black", label="Bille")  # Ajout d'un label ici
+radius = 0.01 * axis_limit  # Le rayon est proportionnel à la limite des axes (ajustez 0.02 si nécessaire)
+ball = plt.Circle((0, 0), radius, color='blue', ec="black", label="Bille")
 ax.add_patch(ball)
 
 # Ajout des labels
