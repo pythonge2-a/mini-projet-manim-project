@@ -28,12 +28,27 @@
         <hr style="border: 0.4px solid black;">
         <p>Dot displacement</p>
         <label for="x_coord">x coordinate:</label>
-        <input type="number" id="x_coord" name="x_coord" required>
+        <input type="number" id="x_coord" name="x_coord" required value="0" min="-10", max="10">
         <label for="y_coord">y coordinate:</label>
-        <input type="number" id="y_coord" name="y_coord" required>
+        <input type="number" id="y_coord" name="y_coord" required value="0" min="-10", max="10">
         <button type="submit" name="script_name" value="manim_script_3.py">Generate</button>
         
         <hr style="border: 0.4px solid black;">
+        
+        <p>Other</p>
+        <select name="pets" id="pet-select">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+        <br>
+        <hr style="border: 0.4px solid black;">
+        <br>
 
         <a href="{% url 'home' %}">Home page</a>
 

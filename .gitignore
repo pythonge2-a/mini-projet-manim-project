@@ -21,6 +21,7 @@
 **/media/images/
 **/media/videos/
 **/media/texts/
+**/media/Tex/
 
 # Ignore personal test files
 tests/
