@@ -32,7 +32,8 @@ y = v0 * np.sin(theta_rad) * t_points - 0.5 * g * t_points**2
 # Calcul de la portée et de la hauteur maximales
 max_x = max(x)
 max_y = max(y)
-axis_limit = max(3, max(max_x + (1/15)*max_x, max_y + (1/15)*max_y))  # Assure un minimum de 3m pour la limite des axes, ou légèrement au-dessus
+axis_limit_x = max(3, max_x + (1/15)*max_x)  # Limite X pour ne pas trop agrandir
+axis_limit_y = max(3, max_y + (1/15)*max_y)  # Limite Y pour ne pas trop agrandir
 
 # --- Génération des graphiques ---
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))  # Graphiques côte à côte
@@ -84,12 +85,13 @@ plt.savefig("trajectoires_bille.png")
 
 # --- Création de l'animation ---
 fig, ax = plt.subplots()
-ax.set_xlim(0, axis_limit)
-ax.set_ylim(0, axis_limit)
+ax.set_xlim(0, axis_limit_x)
+ax.set_ylim(0, axis_limit_y)
 ax.set_aspect('equal')
 
+
 # Création de la bille
-radius = 0.01 * axis_limit  # Le rayon est proportionnel à la limite des axes (ajustez 0.02 si nécessaire)
+radius = 0.01 * max(axis_limit_x,axis_limit_y)  # Le rayon est proportionnel à la limite des axes (ajustez 0.02 si nécessaire)
 ball = plt.Circle((0, 0), radius, color='blue', ec="black", label="Bille")
 ax.add_patch(ball)
 
