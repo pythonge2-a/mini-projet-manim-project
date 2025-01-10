@@ -24,3 +24,5 @@
 
 # Ignore personal test files
 tests/
+mathplotlib_animation/
+manim_site/EstebanCinelli/
