@@ -27,7 +27,6 @@ if __name__ == "__main__":
     parser.add_argument("--output_name", type=str, required=True, help="Output filename")
     args = parser.parse_args()
 
-
     config.media_width = "100%"
     config.verbosity = "WARNING"
     config.quality = "high_quality"

@@ -36,8 +36,13 @@ class OrbitePlanetes(Scene):
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Manim script to visualize ellipse trajectory of a planet")
+    parser = argparse.ArgumentParser(description="Manim script with destination coordinates.")
+    parser.add_argument("--demi_grand_axe", type=float, default=0, help="Demi-grand axe de l'ellipse")
+    parser.add_argument("--excentricite", type=float, default=0, help="Excentricité de l'ellipse")
+    parser.add_argument("--periode_orbitale", type=float, default=0, help="Période orbitale de la planète")
+    parser.add_argument("--output_name", type=str, required=True, help="Output filename")
     args = parser.parse_args()
+
     config.media_width = "100%"
     config.verbosity = "WARNING"
     config.quality = "high_quality"
@@ -46,3 +51,6 @@ if __name__ == "__main__":
     config.video_dir = f"media/videos/temp_{args.output_name}/1080p60"
     video_name = "output_" + args.output_name
     config.output_file = video_name
+
+    scene = OrbitePlanetes(demi_grand_axe=args.demi_grand_axe, excentricite=args.excentricite, periode_orbitale=args.periode_orbitale)
+    scene.render()
