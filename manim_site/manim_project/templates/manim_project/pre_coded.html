@@ -85,8 +85,18 @@
 
 
         <hr style="border: 0.4px solid black;">
-        <p>Projectile trajectory</p>
+        <p>Fourier series</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="function_type">Function type (e.g., square, triangle, toothsaw):</label>
+            <input type="text" id="function_type" name="function_type" required>
 
+            <label for="number_of_terms">Number of terms:</label>
+            <input type="number" id="number_of_terms" name="number_of_terms" required>
+            <button type="submit" name="FourierSeries" value="FourierSeries.py">Generate</button>
+        </form>
+
+        
         
 
 
