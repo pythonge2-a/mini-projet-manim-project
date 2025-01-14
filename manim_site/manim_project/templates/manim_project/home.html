@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Home</title>
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
+</head>
+
+
+
+<body>
+    <div class="logo">
+        <img src="{% static 'images/bourdon.png' %}" alt="logo">
+    </div>
+
+    <h1>Manim-Django-Project</h1>
+    
+    <p class="author">E.Cinelli - C.Grodent - M.Ricchieri - V.Santiago <br> 2024-2025</p>
+    <section>
+        <h2>Project Goal</h2>
+        <p>
+            Manim and matplotlib.animation are powerful tools for creating mathematical and educational animations but require Python programming skills, which can be a barrier for many users.
+        </p>
+        <p>
+            This project aims to make these tools more accessible through an intuitive web platform built using Django, a high-level Python web framework. The platform will offer:
+        </p>
+        <ul>
+            <li>Custom Script Submission: Allow users to submit their own Manim or matplotlib scripts.</li>
+            <li>Pre-coded Animation Library: Provide ready-to-use scripts for quick animation creation.</li>
+            <li>Interactive Customization: Let users input parameters to personalize animations.</li>
+        </ul>
+        <p>
+            The goal is to simplify the creation of educational animations, enabling teachers, students, and content creators to visualize concepts without needing advanced technical skills.
+        </p>
+        <p>
+            This project is developed as part of the Python course at HEIG-VD, utilizing Django to ensure a seamless and user-friendly web experience.
+        </p>
+    </section>
+
+    <br><br>
+
+    <section>
+        <h2>The Effectiveness of Graphic Supports in Education</h2>
+        <p>
+            Research has shown that integrating graphic supports—such as diagrams, charts, and illustrations—into educational practices can significantly enhance learning compared to relying solely on written explanations. This conclusion is supported by key cognitive theories and empirical studies by prominent researchers like Paivio, Mayer, Carney, Levin, and Butcher. These studies demonstrate that visuals simplify complex information, reduce cognitive overload, and cater to diverse learning preferences.
+        </p>
+        <p>
+            According to Paivio's Dual Coding Theory (1986), humans process information more effectively when it is presented through both verbal and visual channels. This dual pathway engages different cognitive systems, leading to better memory and comprehension. Similarly, Richard Mayer's Multimedia Learning Theory (2001) supports the idea that combining visual aids with verbal explanations reduces cognitive strain and helps learners process abstract or technical information more easily.
+        </p>
+        <p>
+            Empirical studies back these theories. Carney and Levin (2002) found that visual illustrations improve understanding and retention, especially when learners are trying to grasp difficult concepts. Additionally, Butcher (2006) demonstrated that diagrams are particularly effective for teaching spatial or technical topics by offering clear, visual representations of relationships or processes that written descriptions struggle to convey.
+        </p>
+        <p>
+            Visual supports also align with different learning preferences, especially for visual learners, making information more engaging and accessible. However, it is important to note that overly complex or poorly designed graphics can lead to cognitive overload and hinder learning rather than support it.
+        </p>
+        <p>
+            In conclusion, graphic supports are a vital complement to written explanations. The insights of Paivio, Mayer, Carney, Levin, and Butcher emphasize the importance of thoughtful visual design and integration into teaching methods. When used appropriately, they can improve memory, foster deeper understanding, and make learning concepts more accessible to all students.
+        </p>
+    </section>
+
+    <br><br>
+
+    
+    <h2>Roadmap</h2>
+    <a href="{% url 'edit_code' %}">Go to manim script editor</a><br>
+    <a href="{% url 'generate_pre_coded_video' %}">Generate pre-coded video</a><br>
+    <a href="{% url 'video_bank' %}">Go to video bank</a><br><br><br>
+</body>
+</html>
