@@ -24,7 +24,7 @@
     <hr style="border: 0.4px solid black;">
     <div class="video-container">
         <div>
-            <h3>Fourier Approximation</h3>
+            <h3>Fourier Square Approximation</h3>
             <video width="450" loop class="small_video">
                 <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
             </video>
@@ -38,60 +38,45 @@
         </div>
 
         <div>
-            <h3>Fourier Approximation</h3>
+            <h3>Gaussian plane</h3>
             <video width="450" loop class="small_video">
-                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+                <source src="/media/video_bank/gaussian_plane/GaussianPlane.mp4" type="video/mp4">
             </video>
             <form method="post" action="{% url 'get-script' %}">
                 {% csrf_token %}
-                <input type="hidden" name="script_path" value="video_bank/FourierApprox/FourierApprox.py">
+                <input type="hidden" name="script_path" value="video_bank/gaussian_plane/gaussian_plane.py">
                 <div style="text-align: center;">
                     <br><button type="submit">Edit this video</button>
                 </div>
             </form>
         </div>
-    </div>
 
-    
-    <br><br>
-    <h2>Physics animations</h2>
-    <hr style="border: 0.4px solid black;">
-    <div class="video-container">
         <div>
-            <h3>Fourier Approximation</h3>
-            <p>Go to Script-editor with this code</p><br>
+            <h3>Sin-cos plane</h3>
             <video width="450" loop class="small_video">
-                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+                <source src="/media/video_bank/sin_cos_plane/SineCosinePlane.mp4" type="video/mp4">
             </video>
+            <form method="post" action="{% url 'get-script' %}">
+                {% csrf_token %}
+                <input type="hidden" name="script_path" value="video_bank/sin_cos_plane/sin_cos_plane.py">
+                <div style="text-align: center;">
+                    <br><button type="submit">Edit this video</button>
+                </div>
+            </form>
         </div>
-
+        
         <div>
-            <h3>Fourier Approximation</h3>
-            <p>Go to Script-editor with this code</p><br>
+            <h3>Sin product plane</h3>
             <video width="450" loop class="small_video">
-                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
+                <source src="/media/video_bank/sin_product_plane/SineProductPlane.mp4" type="video/mp4">
             </video>
-        </div>
-    </div>
-
-    <br><br>
-    <h2>Energy animations</h2>
-    <hr style="border: 0.4px solid black;">
-    <div class="video-container">
-        <div>
-            <h3>Fourier Approximation</h3>
-            <p>Go to Script-editor with this code</p><br>
-            <video width="450" loop class="small_video">
-                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div>
-            <h3>Fourier Approximation</h3>
-            <p>Go to Script-editor with this code</p><br>
-            <video width="450" loop class="small_video">
-                <source src="/media/video_bank/FourierApprox/FourierApprox.mp4" type="video/mp4">
-            </video>
+            <form method="post" action="{% url 'get-script' %}">
+                {% csrf_token %}
+                <input type="hidden" name="script_path" value="video_bank/sin_product_plane/sin_product_plane.py">
+                <div style="text-align: center;">
+                    <br><button type="submit">Edit this video</button>
+                </div>
+            </form>
         </div>
     </div>
     

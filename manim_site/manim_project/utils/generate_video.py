@@ -39,5 +39,3 @@ def generate_pre_coded_video(script_name, **kwargs):
     os.system(command)
 
     return video_id
-
-

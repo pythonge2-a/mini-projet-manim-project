@@ -28,8 +28,10 @@
             {% csrf_token %}
             <label for="x_coord">x coordinate:</label>
             <input type="number" id="x_coord" name="x_coord" required>
+
             <label for="y_coord">y coordinate:</label>
             <input type="number" id="y_coord" name="y_coord" required>
+
             <button type="submit" name="script_name" value="manim_script_3.py">Generate</button>
         </form>
 
@@ -88,16 +90,49 @@
         <p>Fourier series</p>
         <form method="post" action="{% url 'generate_pre_coded_video' %}">
             {% csrf_token %}
-            <label for="function_type">Function type (e.g., square, triangle, toothsaw):</label>
-            <input type="text" id="function_type" name="function_type" required>
+            <label for="function_type">Function type:</label>
+            <select id="function_type" name="function_type" required>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="toothsaw">Toothsaw</option>
+            </select>
 
             <label for="number_of_terms">Number of terms:</label>
-            <input type="number" id="number_of_terms" name="number_of_terms" required>
-            <button type="submit" name="FourierSeries" value="FourierSeries.py">Generate</button>
+            <input type="number" 
+                id="number_of_terms" 
+                name="number_of_terms" 
+                min="1"
+                max="100"
+                value="10"
+                required>
+            <button type="submit" name="script_name" value="FourrierSeries.py">Generate</button>
         </form>
 
         
-        
+        <hr style="border: 0.4px solid black;">
+        <p>Trajectory</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="v0">v0:</label>
+            <input type="number"
+                id="v0" 
+                name="v0"
+                min="5"
+                max="25"
+                value="10"
+                required>
+            
+            <label for="theta">theta:</label>
+            <input type="number"
+                id="theta" 
+                name="theta"
+                min="15"
+                max="80"
+                value="60"
+                required>
+
+            <button type="submit" name="script_name" value="trajectory.py">Generate</button>
+        </form>
 
 
         <hr style="border: 0.4px solid black;">

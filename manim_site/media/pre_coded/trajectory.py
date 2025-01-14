@@ -2,12 +2,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
 import argparse
+import os
 
 # Analyse des arguments de la ligne de commande
 parser = argparse.ArgumentParser(description="Générer des graphiques et une animation des trajectoires.")
 parser.add_argument('--v0', type=float, required=True, help="Vitesse initiale (5 à 25 m/s).")
 parser.add_argument('--theta', type=float, required=True, help="Angle de lancement (10° à 90°).")
+parser.add_argument("--output_name", type=str, required=True, help="Output filename")
 args = parser.parse_args()
+
 
 # Validation des arguments
 if not (5 <= args.v0 <= 25):
@@ -112,4 +115,6 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=len(t_points), interval=20, blit=True)
 
 # Sauvegarde de l'animation
-ani.save("trajectoire_bille.mp4", writer='ffmpeg', fps=30)
+output_directory = os.path.join(os.path.dirname(__file__), "..", "videos", f"temp_{args.output_name}", "1080p60")
+os.makedirs(output_directory, exist_ok=True)
+ani.save(os.path.join(output_directory, f"output_{args.output_name}.mp4"), writer='ffmpeg', fps=60)
