@@ -3,25 +3,62 @@ from manim import *
 class LowPassFilter(Scene):
     def construct(self):
         # 1. Titre
-        title = Text("Filtre passe-bas").to_edge(UP)
+        title = Text("Filtre du premier Ordre", font_size=48).move_to(ORIGIN)
         self.play(Write(title))
         self.wait(2)
 
-        # 2. Supprimer le titre avant de créer les axes
         self.play(FadeOut(title))
+        self.wait(1)
 
-        # 3. Text explicatif et formule
+        # 2. Text explicatif et formule
         txt = Text("La fonction de transfert d'un filtre").shift(UP*2)
-        txt2 = Text(" passe-bas est donnée par :").next_to(txt, DOWN, buff=0.5)
-        transfer_function_formula = MathTex(r"H(f) = \frac{Uout}{Uin} =\frac{K}{1 + j\frac{\omega}{\omega c}}").next_to(txt2, DOWN, buff=0.5)
+        txt2 = Text(" est donnée par :").next_to(txt, DOWN, buff=0.5)
+        transfer_function = MathTex(r"H(f) = \frac{Uout}{Uin} =\frac{Z2}{Z1 + Z2}").next_to(txt2, DOWN, buff=0.5)
 
-        # Affichage du texte explicatif et de la formule
         self.play(Write(txt))
         self.play(Write(txt2))
-        self.play(Write(transfer_function_formula))
-        self.wait(2)
+        self.play(Write(transfer_function))
+        self.wait(1)
 
-        self.play(FadeOut(txt), FadeOut(transfer_function_formula), FadeOut(txt2))
+        self.play(FadeOut(txt, txt2, transfer_function))
+        self.wait(1)
+
+        # 4. Insertion de l'image
+        txt = Text("Prenons un cas simple :").shift(UP*2)
+        image = ImageMobject("media/images/LowPassFilter.PNG").next_to(txt, DOWN, buff=1.5)
+        image.scale(2)
+
+        self.play(Write(txt))
+        self.play(FadeIn(image))
+
+        self.wait(1)
+        self.play(FadeOut(txt, image))
+
+        # 5. Résultat
+        txt = Text("Nous avons donc pour la H(f):", font_size=30).move_to(ORIGIN + UP*2)
+        transfer_function = MathTex(r"H(f) = \frac{ZC}{ZC + R}", font_size=30).next_to(txt, DOWN, buff=0.5)
+        txt2 = Text("Sachant que:", font_size=30)
+        txt3 = MathTex(r"ZC = \frac{1}{j\omega C}", font_size=30)
+
+        txt2.align_to(txt, LEFT)  
+        txt3.next_to(txt2, RIGHT, buff=1)     
+
+        txt4 = Text("Nous obtenons:", font_size=30)
+        result = MathTex(r"H(f) = \frac{1}{1 + j\omega RC}")
+
+        txt4.align_to(txt2, LEFT)  
+        txt4.next_to(txt2, DOWN, buff=1)
+        result.next_to(txt4, RIGHT)  
+
+        # Animation des objets
+        self.play(Write(txt))
+        self.play(Write(transfer_function))
+        self.play(Write(txt2), Write(txt3))  
+        self.play(Write(txt4), Write(result))
+        
+        self.wait(1)
+
+        self.play(FadeOut(txt, transfer_function, txt2, txt3, txt4, result))
 
         # 4. Système d'axes
         axes = Axes(
