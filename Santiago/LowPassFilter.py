@@ -1,7 +1,6 @@
 from manim import *
 import math
 
-
 class LowPassFilter(Scene):
     def construct(self):
         # Constantes globales
@@ -82,17 +81,17 @@ class LowPassFilter(Scene):
         self.play(FadeOut(txt, txt2, txt3, pulsation))
 
         # 7. Calcul de la fréquence de coupure pour 1 kHz
-        R = 1000
+        R = 159
         C = 0.000001
         wc = 1 / (R * C)
         fc = wc / (2 * PI)
 
-        txt = Text("Calculons la fréquence de coupure pour R = 1 k\u03a9 et C = 1 \u00b5F", font_size=30).move_to(ORIGIN + UP*2)
+        txt = Text("Calculons la fréquence de coupure pour R = 159 Ohm et C = 1 \u00b5F", font_size=30).move_to(ORIGIN + UP*2)
         txt2 = Text("On trouve :", font_size=30).next_to(txt, DOWN, buff=2)
 
         self.wait(1)
 
-        freq = MathTex(fr"f_c = \frac{{1}}{{2\pi RC}} = {fc:.2f} Hz", font_size=35).next_to(txt2)
+        freq = MathTex(fr"f_c = \frac{{\omega_c}}{{2 * pi}} = \frac{{1}}{{2 * pi * RC}} = {fc:.2f} Hz", font_size=35).next_to(txt2)
 
         self.play(Write(txt))
         self.play(Write(txt2))
@@ -113,11 +112,12 @@ class LowPassFilter(Scene):
 
         magnitude_labels = magnitude_axes.get_axis_labels(
             x_label="f (kHz)",
-            y_label="Magnitude (dB)"
+            y_label="dBgit "
         )
         self.play(Create(magnitude_axes), Write(magnitude_labels))
 
-        # 7. Tracé de la magnitude (ajusté pour le Bode)
+        # 7. Tracé de la magnitude
+        fc = 1  # Fréquence de coupure en kHz
         magnitude_plot = magnitude_axes.plot(
             lambda f: -20 * math.log10(math.sqrt(1 + (f / fc)**2)),  # Formule correcte pour la magnitude en dB
             color=BLUE,
@@ -137,45 +137,6 @@ class LowPassFilter(Scene):
         self.play(Write(annotation_magnitude))
         self.wait(2)
 
-        # Transition vers le diagramme de phase
+        # Fin de l'animation
         self.play(FadeOut(magnitude_axes, magnitude_labels, magnitude_plot, critical_freq_magnitude, annotation_magnitude))
         
-        # 9. Système d'axes : Phase
-        phase_axes = Axes(
-            x_range=[0, 5, 1],  # Fréquence (kHz)
-            y_range=[-90, 0, 15],  # Phase (degrés)
-            axis_config={"color": WHITE},
-            x_axis_config={"include_tip": True, "label_direction": DOWN},
-            y_axis_config={"include_tip": True, "label_direction": LEFT}
-        ).add_coordinates()
-
-        phase_labels = phase_axes.get_axis_labels(
-            x_label="f (kHz)",
-            y_label="Phase (°)"
-        )
-        self.play(Create(phase_axes), Write(phase_labels))
-
-        # 10. Tracé de la phase
-        phase_plot = phase_axes.plot(
-            lambda f: -math.atan(f / fc) * 180 / PI,
-            color=ORANGE,
-            x_range=[0.1, 5]
-        )
-        self.play(Create(phase_plot), run_time=2)
-
-        # 11. Annotation de la fréquence de coupure
-        critical_freq_phase = Dot(
-            phase_axes.coords_to_point(fc, -45), color=RED
-        )  # À -45° pour f_c
-        self.play(FadeIn(critical_freq_phase))
-        self.play(Indicate(critical_freq_phase))
-        annotation_phase = MathTex("f_c", font_size=30).next_to(
-            critical_freq_phase, UP
-        )
-        self.play(Write(annotation_phase))
-        self.wait(2)
-
-        # 12. Fin
-        self.play(FadeOut(phase_axes, phase_labels, phase_plot, critical_freq_phase, annotation_phase))
-
-
