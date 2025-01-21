@@ -108,6 +108,99 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ## **5. Example for manim**
 
+## Step 1: Importing Modules
+
+```python
+from manim import *
+```
+
+- **`from manim import *`** :  
+  Cette ligne importe toutes les classes et fonctions de la bibliothèque **Manim**.  
+  Cela permet d’utiliser directement des objets comme `Scene`, `MathTex`, et des animations comme `Write` ou `FadeIn`.
+
+---
+
+## Step 2: Creating a Class Inheriting from `Scene`
+
+```python
+class AnnotateMath(Scene):
+```
+
+- **`class AnnotateMath(Scene):`** :  
+  - Crée une classe personnalisée pour définir notre animation.  
+  - La classe hérite de `Scene`, qui est le canevas de base de Manim pour ajouter des objets et animations.
+
+---
+
+## Step 3: `construct` method
+
+```python
+def construct(self):
+```
+
+- **`construct(self)`** :  
+  - Méthode obligatoire pour une `Scene`.  
+  - Tout le contenu et les animations de la scène doivent y être définis.
+
+---
+
+## Step 4: Add a Math Equation
+
+```python
+formula = MathTex(r"a^2 + b^2 = c^2")
+```
+
+- **`MathTex`** : Permet de créer des équations en utilisant LaTeX.  
+- **`r"a^2 + b^2 = c^2"`** :  
+  - La chaîne représente le **théorème de Pythagore**.  
+  - Le `r` indique qu’il s’agit d’une chaîne brute.
+
+---
+
+## Step 5: Add Annotation
+
+```python
+annotation = Text("Théorème de Pythagore").next_to(formula, DOWN)
+```
+
+- **`Text`** : Sert à afficher du texte classique, comme ici *"Théorème de Pythagore"*.  
+- **`.next_to(formula, DOWN)`** :  
+  - Positionne le texte juste en dessous de `formula`.  
+  - `DOWN` est une constante Manim indiquant une direction vers le bas.
+
+---
+
+## Step 6: Adding Animations
+
+### Animation de l’Équation
+```python
+self.play(Write(formula))
+```
+
+- **`self.play()`** : Lance une animation sur la scène.  
+- **`Write(formula)`** : Fait apparaître l’équation comme si elle était écrite à la main.
+
+### Animation de l’Annotation
+```python
+self.play(FadeIn(annotation))
+```
+
+- **`FadeIn(annotation)`** : Fait apparaître progressivement l'annotation sur la scène.
+
+---
+
+## Step 7: Break
+
+```python
+self.wait(2)
+```
+
+- **`self.wait(2)`** : Met la scène en pause pendant 2 secondes pour permettre au spectateur de visualiser le résultat final.
+
+---
+
+## Final result
+
 ```python
 from manim import *
 
