@@ -78,7 +78,7 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ---
 
-## Installation of the project
+## **4. Installation of the project**
 
 1. Clone the repository:  
    ```bash
@@ -103,3 +103,19 @@ The project aims to democratize access to these tools through an intuitive web p
 7. Run the server with 
     ```bash 
     python manage.py runserver
+
+---
+
+## **5. Example for manim**
+
+```python
+from manim import *
+
+class AnnotateMath(Scene):
+    def construct(self):
+        formula = MathTex(r"a^2 + b^2 = c^2")
+        annotation = Text("Théorème de Pythagore").next_to(formula, DOWN)
+
+        self.play(Write(formula))
+        self.play(FadeIn(annotation))
+        self.wait(2)
