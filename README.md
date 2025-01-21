@@ -9,7 +9,7 @@
 
 ---
 
-## **3. Project Description**
+## **1. Project Description**
 
 ### **Context and Problem Statement**
 
@@ -41,7 +41,7 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ---
 
-## **4. Project Objectives**
+## **2. Project Objectives**
 
 ### **Technical Objectives**
 
@@ -59,7 +59,7 @@ The project aims to democratize access to these tools through an intuitive web p
 
 ---
 
-## **5. Functional Description**
+## **3. Functional Description**
 
 ### **System Architecture**
 
@@ -89,17 +89,17 @@ The project aims to democratize access to these tools through an intuitive web p
 3. Install poetry venv with 
     ```bash 
     poetry install --no-root
-5. Activate the venv with 
+4. Activate the venv with 
     ```bash 
     poetry shell
-6. Check the installation of manim and django with 
+5. Check the installation of manim and django with 
     ```bash
     manim --version
     django-admin --version
-8. Go to the manim_site directory with (first cmd for Windows / second cmd for linux)
+6. Go to the manim_site directory with (first cmd for Windows / second cmd for linux)
     ```bash
     cd .\manim_site\ 
     cd manim_site/
-10. Run the server with 
+7. Run the server with 
     ```bash 
     python manage.py runserver
