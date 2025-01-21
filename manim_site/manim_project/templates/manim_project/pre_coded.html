@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Generate pre-coded video</title>
+
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images\bourdon.ico' %}">
+</head>
+
+
+<body>
+    <div class="logo">
+        <img src="{% static 'images/bourdon.png' %}" alt="logo">
+    </div>
+    
+    <h1>Generate pre-coded video</h1>
+    <!-- Form to submit the selected script -->
+    <form method="post" action="{% url 'generate_pre_coded_video' %}">
+        {% csrf_token %}
+        <label for="script_name">Choose a pre-coded script:</label>
+
+
+        <hr style="border: 0.4px solid black;">
+        <p>Dot displacement</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="x_coord">x coordinate:</label>
+            <input type="number" id="x_coord" name="x_coord" required>
+
+            <label for="y_coord">y coordinate:</label>
+            <input type="number" id="y_coord" name="y_coord" required>
+
+            <button type="submit" name="script_name" value="manim_script_3.py">Generate</button>
+        </form>
+
+
+        <hr style="border: 0.4px solid black;">
+        <p>Dot displacement 2</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="x_coord">x coordinate:</label>
+            <input type="number" id="x_coord" name="x_coord" required>
+            <label for="y_coord">y coordinate:</label>
+            <input type="number" id="y_coord" name="y_coord" required>
+            <button type="submit" name="script_name" value="manim_script_3.py">Generate</button>
+        </form>
+
+
+        <hr style="border: 0.4px solid black;">
+        <p>Planet orbit</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="demi_grand_axe">Semi-major axis (units):</label>
+            <input type="number" 
+                id="demi_grand_axe" 
+                name="demi_grand_axe" 
+                min="0.1" 
+                max="7"
+                step="0.1" 
+                value="3"
+                required>
+
+            <label for="excentricite">Eccentricity (0-1):</label>
+            <input type="number" 
+                id="excentricite" 
+                name="excentricite" 
+                min="0.1" 
+                max="1.0" 
+                step="0.01" 
+                value="0.5"
+                required>
+
+            <label for="periode_orbitale">Orbital period (seconds):</label>
+            <input type="number" 
+                id="periode_orbitale" 
+                name="periode_orbitale" 
+                min="1" 
+                max="10" 
+                step="0.5" 
+                value="5"
+                required>
+
+            <button type="submit" name="script_name" value="PlanetOrbit.py">Generate</button>
+        </form>
+        
+        <hr style="border: 0.4px solid black;">
+        <p>Fourier series</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="function_type">Function type:</label>
+            <select id="function_type" name="function_type" required>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="toothsaw">Toothsaw</option>
+            </select>
+
+            <label for="number_of_terms">Number of terms:</label>
+            <input type="number" 
+                id="number_of_terms" 
+                name="number_of_terms" 
+                min="1"
+                max="100"
+                value="10"
+                required>
+            <button type="submit" name="script_name" value="FourrierSeries.py">Generate</button>
+        </form>
+
+        
+        <hr style="border: 0.4px solid black;">
+        <p>Trajectory</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="v0">v0:</label>
+            <input type="number"
+                id="v0" 
+                name="v0"
+                min="5"
+                max="25"
+                value="10"
+                required>
+            
+            <label for="theta">theta:</label>
+            <input type="number"
+                id="theta" 
+                name="theta"
+                min="15"
+                max="80"
+                value="60"
+                required>
+
+            <button type="submit" name="script_name" value="trajectory.py">Generate</button>
+        </form>
+
+        <hr style="border: 0.4px solid black;">
+        <p>Collision elastique</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="m1">Bowl 1 mass:</label>
+            <input type="number"
+                id="m1" 
+                name="m1"
+                min="0.1"
+                max="10"
+                step="0.1" 
+                value="1.0"
+                required>
+            
+            <label for="m2">Bowl 2 mass:</label>
+            <input type="number"
+                id="m2" 
+                name="m2"
+                min="0.1"
+                max="10"
+                step="0.1" 
+                value="1.0"
+                required>
+            
+            <label for="v1">Bowl 1 vitess:</label>
+            <input type="number"
+                id="v1" 
+                name="v1"
+                min="0.1"
+                max="15"
+                step="0.1" 
+                value="2.0"
+                required>
+            
+            <label for="v2">Bowl 2 vitess:</label>
+            <input type="number"
+                id="v2" 
+                name="v2"
+                min="0.1"
+                max="15"
+                step="0.1" 
+                value="1.0"
+                required>
+
+            <button type="submit" name="script_name" value="collision_ela.py">Generate</button>
+        </form>
+
+        <hr style="border: 0.4px solid black;">
+        <p>Collision inelastique</p>
+        <form method="post" action="{% url 'generate_pre_coded_video' %}">
+            {% csrf_token %}
+            <label for="m1">Bowl 1 mass:</label>
+            <input type="number"
+                id="m1" 
+                name="m1"
+                min="0.1"
+                max="10"
+                step="0.1" 
+                value="1.0"
+                required>
+            
+            <label for="m2">Bowl 2 mass:</label>
+            <input type="number"
+                id="m2" 
+                name="m2"
+                min="0.1"
+                max="10"
+                step="0.1" 
+                value="1.0"
+                required>
+            
+            <label for="v1">Bowl 1 vitess:</label>
+            <input type="number"
+                id="v1" 
+                name="v1"
+                min="0.1"
+                max="15"
+                step="0.1" 
+                value="2.0"
+                required>
+            
+            <label for="v2">Bowl 2 vitess:</label>
+            <input type="number"
+                id="v2" 
+                name="v2"
+                min="0.1"
+                max="15"
+                step="0.1" 
+                value="1.0"
+                required>
+
+            <button type="submit" name="script_name" value="collision_inela.py">Generate</button>
+        </form>
+
+
+        <hr style="border: 0.4px solid black;">
+
+        <a href="{% url 'home' %}">Home page</a>
+
+    </form>
+</body>
+</html>
